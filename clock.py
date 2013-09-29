@@ -1,7 +1,8 @@
-#!/bin/env/python
+#!/bin/python2.7
 from vars import *
 from datetime import datetime
 import copy
+import sys
 
 #Converts an integer
 #to its english
@@ -58,12 +59,12 @@ def getNumList(time):
 # and returns list of ints
 # in clock-face order
 def getTime():
-    time = datetime.now().time().strftime('%I:%M')
+    tr = datetime.now().time().strftime('%I:%M')
     timeList = []
-    timeList.append(int(str(time)[0:1]))
-    timeList.append(int(str(time)[1:2]))
-    timeList.append(int(str(time)[3:4]))
-    timeList.append(int(str(time)[4:5]))
+    timeList.append(int(str(tr)[0:1]))
+    timeList.append(int(str(tr)[1:2]))
+    timeList.append(int(str(tr)[3:4]))
+    timeList.append(int(str(tr)[4:5]))
     return timeList
 
 # drawsTime lol
@@ -86,5 +87,11 @@ def drawTime():
     print str(clock[11]).replace('##',str(numList[-4][2]))
     print str(clock[12])
 
+def drawTimeTest():
+    pass
+
 if __name__ == '__main__':
-    drawTime()
+    if sys.argv[0] == 'test':
+        drawTimeTest()
+    else:
+        drawTime()
